@@ -70,46 +70,55 @@ static void MPU_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 static __attribute__((section(".AXI_SRAM"))) uint16_t adc_1_buffer[FFT_N];
-static __attribute__((section(".AXI_SRAM"))) uint16_t adc_2_buffer[FFT_N];//用于学习模式 两路ADC同步采样以获取幅频 相频曲线
+static __attribute__((section(".AXI_SRAM"))) uint16_t adc_2_buffer[FFT_N];//用于学习模式 两路ADC同步采样以获取幅相频曲线
 
 
-static __attribute__((section(".AXI_SRAM"))) uint16_t adc_buffer[1024];//滤波模式ADC双缓冲
+static __attribute__((section(".AXI_SRAM"))) uint16_t adc_buffer[1024];//滤波模式ADC双缓
 static __attribute__((section(".AXI_SRAM"))) uint16_t dac_buffer[1024];//DAC双缓冲
 
 volatile uint8_t adc1_flag;
-volatile uint8_t adc2_flag;//学习模式两路ADC同步采样标志位
+volatile uint8_t adc2_flag;//学习模式两路ADC同步采样标志
 
-/* ADC DMA 全缓冲完成回调 */
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
-{
-	if(hadc->Instance==ADC1)
-	{
-		if(adc1_flag==0)
-			adc1_flag = 1;
-	}
-  	if(hadc->Instance==ADC2)
-	{
-		if(adc2_flag==0)
-			adc2_flag = 1;
-	}
-}
-/* ADC DMA 半缓冲完成回调 */
-void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
-{
+volatile uint8_t adc_filter_half; // 滤波模式:0=后半缓冲进行 1=前半缓冲就绪 2=后半缓冲就绪
+volatile uint8_t dac_filter_half; 
 
-}
+     void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
+     {
+         if (hadc->Instance == ADC1 && g_sys_mode == MODE_FILTER) {
+             return; 
+        }
+      }
 
-/* DAC DMA 全缓冲完成回调 */
-void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef *hdac)
-{
+     void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+     {
+         if (hadc->Instance == ADC1 && g_sys_mode == MODE_FILTER) {
+                       if (hadc->Instance == ADC1 && g_sys_mode == MODE_FILTER) {
+                 for (uint16_t i = 0; i < 512; i++) {
+                    uint32_t val = (uint32_t)adc_buffer[i] * 3 / 2;   // ×1.5
+                     if (val > 4095) val = 4095;                       // 钳位到DAC 12位量程
+                    dac_buffer[i] = (uint16_t)val;
+                 }
+             return;
+         }
+         // ---- 非滤波器模式
+         if (hadc->Instance == ADC1) {
+             if (adc1_flag == 0) adc1_flag = 1;
+         }
+         if (hadc->Instance == ADC2) {
+             if (adc2_flag == 0) adc2_flag = 1;
+         }
+     }
+    }
 
-}
-
-/* DAC DMA 半缓冲完成回调*/
-void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac)
-{
-
-}
+     void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac)
+     {
+         (void)hdac;
+     }
+     void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef *hdac)
+     {
+         (void)hdac;
+         // DAC后半缓冲已消耗完
+     }
 /* USER CODE END 0 */
 
 /**
@@ -271,23 +280,44 @@ void PeriphCommonClock_Config(void)
 /* USER CODE BEGIN 4 */
 void APP_Proc(void)
 {
+    static SysMode_t prev_mode = MODE_IDLE;
+
+    if (prev_mode != MODE_FILTER && g_sys_mode == MODE_FILTER) {
+        HAL_ADC_Stop_DMA(&hadc1);
+        HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
+        memset(adc_buffer, 0, sizeof(adc_buffer));
+        memset(dac_buffer, 0, sizeof(dac_buffer));
+        adc_filter_half = 0;
+        HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_buffer, 1024);
+        HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint32_t *)dac_buffer, 1024, DAC_ALIGN_12B_R);
+    }//
+
+    if (prev_mode == MODE_FILTER && g_sys_mode != MODE_FILTER) {
+        HAL_ADC_Stop_DMA(&hadc1);
+        HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
+        HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_1_buffer, FFT_N);
+        adc_filter_half = 0;
+    }
+
+    prev_mode = g_sys_mode;
+
     switch (g_sys_mode) {
     case MODE_SINE_WAVE:
         if (s_data_ready) {
             s_data_ready = false;
             uint16_t amp = VppToAmp(s_last_vpp_raw, 1);
-            uint32_t freq_hz = s_last_freq_raw / 10;   /* 0.1Hz → Hz */
+            uint32_t freq_hz = s_last_freq_raw / 10;
             AD9910_FreWrite(freq_hz);
             AD9910_AmpWrite(amp);
             UART3_Printf("t9.txt=\"%.1f\"\xff\xff\xff", s_last_vpp_raw * 0.1f);
             UART3_Printf("t10.txt=\"%.1f\"\xff\xff\xff", (float)freq_hz);
-        }
+        }//基础题第二问信号发生器
         break;
 
     case MODE_CONTROL:
         if (s_data_ready) {
             s_data_ready = false;
-            uint32_t freq_hz = s_last_freq_raw / 10;   /* 0.1Hz → Hz */
+            uint32_t freq_hz = s_last_freq_raw / 10;
             float comp_k = AmpComp_GetK(freq_hz);
             float amp_f = (float)VppToAmp(s_last_vpp_raw, CONTROL_AMP_MUL) * comp_k;
             if (amp_f > 16384.0f) amp_f = 16384.0f;
@@ -296,30 +326,27 @@ void APP_Proc(void)
             AD9910_AmpWrite(amp);
             UART3_Printf("t9.txt=\"%.1f\"\xff\xff\xff", s_last_vpp_raw * 0.1f);
             UART3_Printf("t10.txt=\"%.1f\"\xff\xff\xff", (float)freq_hz);
-        }
+        }//基础题第二问控制输出
         break;
 
     case MODE_LEARN:
         if (adc1_flag) {
             HAL_ADC_Stop_DMA(&hadc1);
 
-          //TODO:学习模式 只做一遍 获取幅频与相频特性曲线以及滤波器系数 曲线打到串口屏上 学完之后退回到空闲状态 等待开始滤波的指令
+          //TODO:学习模式 只做一次 获取幅频与相频特性曲线以及滤波器系数 曲线打到串口屏上 学完之后退回到空闲状态 等待开始滤波的指令
 
 
+
+            HAL_Delay(1000);
             HMI_SendStr("tm0.en", "0");//关闭串口屏计数器
-            // HMI_DrawWaveform(&g_wave_info);//绘制幅频与相频特性曲线，暂未实现具体逻辑 需要将幅频 相频曲线映射到长300 高200的坐标上
+            // HMI_DrawWaveform(&g_wave_info);//绘制幅频与相频特性曲线，暂未实现具体逻辑 需要将幅频 相频曲线映射到长300 宽200的坐标上
             adc1_flag = 0;
             g_sys_mode = MODE_IDLE;
         }
         break;
 
-    case MODE_FILTER:
-     //TODO:滤波模式  
-     // ADC以及DAC需要使用两个不同的数组  
-     // ADC写完半缓冲>通过数字滤波器计算之后搬到DAC半缓冲     
-     // DAC消耗完半缓冲>CPU再把计算后的数据填到刚消耗完的半缓冲
-     //均采用circular模式 双缓冲中断会置标志位
-        break;
+	case MODE_FILTER:
+		break;
 
     case MODE_IDLE:
          AD9910_AmpWrite(0);
@@ -356,18 +383,17 @@ void Task_10ms(uint16_t ticks)
     UartProc();
 }
 
-/* 100ms 周期：频率测量 + HMI 刷新 */
+/* 100ms 周期 */
 void Task_100ms(void)
 {
-    // FreqMeasure_Process(&g_freq_measure, &g_wave_info);
 }
 
-/* 1 秒周期：预留 — 系统心跳 / 统计上报 */
+/* 1 秒周期 */
 void Task_1sec(void)
 {
 }
 
-/* 1 分钟周期：预留 — 长时间定时操作 */
+/* 1 分钟周期*/
 void Task_1min(void)
 {
 }
