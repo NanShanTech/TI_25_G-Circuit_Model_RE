@@ -1,11 +1,11 @@
 
 cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
 
-set(command "D:/Users/47306/AppData/Roaming/SPB_Data/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.31.5/bin/cmake.exe;--build;D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1;--target;database")
+set(command "D:/Users/47306/AppData/Roaming/SPB_Data/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.31.5/bin/cmake.exe;--build;D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/1;--target;database")
 set(log_merged "")
 set(log_output_on_failure "ON")
-set(stdout_log "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-out.log")
-set(stderr_log "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-err.log")
+set(stdout_log "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-out.log")
+set(stderr_log "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-err.log")
 execute_process(
   COMMAND ${command}
   RESULT_VARIABLE result
@@ -31,7 +31,7 @@ if(result)
   if (${log_merged})
     set(msg "${msg}\nSee also\n  ${stderr_log}")
   else()
-    set(msg "${msg}\nSee also\n  D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-*.log")
+    set(msg "${msg}\nSee also\n  D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-*.log")
   endif()
   if (${log_output_on_failure})
     message(SEND_ERROR "${msg}")
@@ -50,7 +50,7 @@ if(result)
   endif()
 else()
   if(NOT "Ninja" MATCHES "Ninja")
-    set(msg "h743_hal+h743_hal database command succeeded.  See also D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-*.log")
+    set(msg "h743_hal+h743_hal database command succeeded.  See also D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-*.log")
     message(STATUS "${msg}")
   endif()
 endif()

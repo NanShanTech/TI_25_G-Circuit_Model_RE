@@ -1,8 +1,8 @@
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/database.dir
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal.dir
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-build.dir
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-configure.dir
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-executes.dir
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database.dir
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/edit_cache.dir
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/rebuild_cache.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/database.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-build.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-configure.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-executes.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/edit_cache.dir
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/rebuild_cache.dir

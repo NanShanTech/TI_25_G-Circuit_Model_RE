@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal
+source_dir=D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal
 work_dir=
 

@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 #define AD9910_SYSCLK_HZ 999969103.4
-
+// #define AD9910_SYSCLK_HZ 1000000000.0
 /**
  * @brief AD9910 RAM 波形枚举
  */

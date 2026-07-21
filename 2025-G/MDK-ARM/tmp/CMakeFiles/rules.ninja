@@ -23,7 +23,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe --regenerate-during-build -SD:\Desktop_Floder\2025-G\MDK-ARM\tmp -BD:\Desktop_Floder\2025-G\MDK-ARM\tmp
+  command = D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe --regenerate-during-build -SD:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp -BD:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp
   description = Re-running CMake...
   generator = 1
 

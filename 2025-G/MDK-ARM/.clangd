@@ -1,5 +1,5 @@
 CompileFlags:
-  CompilationDatabase: d:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal
+  CompilationDatabase: d:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal
   Add:
     - -include
-    - d:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h
+    - d:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h

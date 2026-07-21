@@ -12,7 +12,7 @@
 		"debug.hideSlowPreLaunchWarning": true,
 		"debug.showInStatusBar": "never",
 		"clangd.arguments": [
-			"--compile-commands-dir=d:\\Desktop_Floder\\2025-G\\MDK-ARM\\out\\h743_hal\\h743_hal"
+			"--compile-commands-dir=d:\\My_Git\\2025-G-RE\\2025-G\\MDK-ARM\\out\\h743_hal\\h743_hal"
 		],
 		"cmsis-csolution.autoDebugLaunch": true,
 		"memory-inspector.addressPadding": "32bit",

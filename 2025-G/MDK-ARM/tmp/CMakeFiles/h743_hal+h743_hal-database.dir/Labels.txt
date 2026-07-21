@@ -1,11 +1,11 @@
 # Target labels
  h743_hal+h743_hal
 # Source files and their labels
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database.rule
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database.rule
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure.rule
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-patch.rule
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-update.rule
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-download.rule
-D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-mkdir.rule
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database.rule
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database.rule
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure.rule
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-patch.rule
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-update.rule
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-download.rule
+D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-mkdir.rule

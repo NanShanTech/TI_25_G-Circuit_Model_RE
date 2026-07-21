@@ -16,7 +16,7 @@ typedef enum {
 
 
 /* 控制模式幅度额外乘数 */
-#define CONTROL_AMP_MUL 2
+#define CONTROL_AMP_MUL 1
 
 /* 当前系统模式（外部可读） */
 extern SysMode_t g_sys_mode;
@@ -31,6 +31,9 @@ void Protocol_ParseByte(uint8_t byte);
 
 /* Vpp 原始值 → AD9959 幅度值 */
 uint16_t VppToAmp(uint32_t vpp_raw, uint8_t mul);
+
+/* 幅值补偿查找表：根据频率 Hz 返回补偿系数 K(f) */
+float AmpComp_GetK(uint32_t freq_hz);
 
 
 #endif

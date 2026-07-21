@@ -34,7 +34,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = D$:\Desktop_Floder\2025-G\MDK-ARM\tmp\
+cmake_ninja_workdir = D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp\
 
 #############################################
 # Utility command for database
@@ -45,13 +45,13 @@ build database: phony h743_hal+h743_hal-database
 #############################################
 # Utility command for h743_hal+h743_hal
 
-build h743_hal+h743_hal: phony CMakeFiles\h743_hal+h743_hal CMakeFiles\h743_hal+h743_hal-complete h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-done h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-database h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-test h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update h743_hal+h743_hal-build h743_hal+h743_hal-configure h743_hal+h743_hal-database h743_hal+h743_hal-executes
+build h743_hal+h743_hal: phony CMakeFiles\h743_hal+h743_hal CMakeFiles\h743_hal+h743_hal-complete h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-done h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-database h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-test h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update h743_hal+h743_hal-build h743_hal+h743_hal-configure h743_hal+h743_hal-database h743_hal+h743_hal-executes
 
 
 #############################################
 # Utility command for h743_hal+h743_hal-build
 
-build h743_hal+h743_hal-build: phony CMakeFiles\h743_hal+h743_hal-build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir h743_hal+h743_hal-configure
+build h743_hal+h743_hal-build: phony CMakeFiles\h743_hal+h743_hal-build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir h743_hal+h743_hal-configure
 
 
 #############################################
@@ -63,7 +63,7 @@ build h743_hal+h743_hal-configure: phony CMakeFiles\h743_hal+h743_hal-configure 
 #############################################
 # Utility command for h743_hal+h743_hal-executes
 
-build h743_hal+h743_hal-executes: phony CMakeFiles\h743_hal+h743_hal-executes h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir h743_hal+h743_hal-build
+build h743_hal+h743_hal-executes: phony CMakeFiles\h743_hal+h743_hal-executes h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir h743_hal+h743_hal-build
 
 
 #############################################
@@ -76,7 +76,7 @@ build h743_hal+h743_hal-database: phony CMakeFiles\h743_hal+h743_hal-database h7
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake-gui.exe -SD:\Desktop_Floder\2025-G\MDK-ARM\tmp -BD:\Desktop_Floder\2025-G\MDK-ARM\tmp"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake-gui.exe -SD:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp -BD:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp"
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -88,7 +88,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe --regenerate-during-build -SD:\Desktop_Floder\2025-G\MDK-ARM\tmp -BD:\Desktop_Floder\2025-G\MDK-ARM\tmp"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe --regenerate-during-build -SD:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp -BD:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -106,7 +106,7 @@ build CMakeFiles\h743_hal+h743_hal | ${cmake_ninja_workdir}CMakeFiles\h743_hal+h
 # Custom command for CMakeFiles\h743_hal+h743_hal-complete
 
 build CMakeFiles\h743_hal+h743_hal-complete h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-done | ${cmake_ninja_workdir}CMakeFiles\h743_hal+h743_hal-complete ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-done: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-test h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-database || h743_hal+h743_hal-build h743_hal+h743_hal-configure h743_hal+h743_hal-database h743_hal+h743_hal-executes
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E make_directory D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-complete && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-done"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E make_directory D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-complete && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-done"
   DESC = Completed 'h743_hal+h743_hal'
   restat = 1
 
@@ -114,8 +114,8 @@ build CMakeFiles\h743_hal+h743_hal-complete h743_hal+h743_hal\src\h743_hal+h743_
 #############################################
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build
 
-build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\Desktop_Floder\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure || h743_hal+h743_hal-configure
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E cmake_echo_color --blue --bold "Building CMake target 'h743_hal+h743_hal'" && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo "Using compiler: AC6 V6.24.0" && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe --build D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1"
+build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_commands.json D$:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\compile_macros.h | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure || h743_hal+h743_hal-configure
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E cmake_echo_color --blue --bold "Building CMake target 'h743_hal+h743_hal'" && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo "Using compiler: AC6 V6.24.0" && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe --build D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/1"
   DESC = Performing build step for 'h743_hal+h743_hal'
   pool = console
   restat = 1
@@ -125,7 +125,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build D$:\
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure: CUSTOM_COMMAND h743_hal+h743_hal\tmp\h743_hal+h743_hal-cfgcmd.txt h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -P D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure-.cmake && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -P D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure-.cmake && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure"
   DESC = Performing configure step for 'h743_hal+h743_hal'
   restat = 1
 
@@ -134,7 +134,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure 
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-database
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-database | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-database: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-configure || h743_hal+h743_hal-configure
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -P D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-.cmake"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -P D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database-.cmake"
   DESC = Performing database step for 'h743_hal+h743_hal'
   pool = console
 
@@ -143,7 +143,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-database |
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-source_dirinfo.txt h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-download"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-download"
   DESC = No download step for 'h743_hal+h743_hal'
   restat = 1
 
@@ -152,7 +152,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download |
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build || h743_hal+h743_hal-build h743_hal+h743_hal-configure
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-executes"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-executes"
   DESC = No executes step for 'h743_hal+h743_hal'
   restat = 1
 
@@ -161,7 +161,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-executes |
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-build || h743_hal+h743_hal-build h743_hal+h743_hal-configure h743_hal+h743_hal-database h743_hal+h743_hal-executes
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append"
   DESC = No install step for 'h743_hal+h743_hal'
 
 
@@ -169,7 +169,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install | 
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -Dcfgdir= -P D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/tmp/h743_hal+h743_hal-mkdirs.cmake && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-mkdir"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -Dcfgdir= -P D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/tmp/h743_hal+h743_hal-mkdirs.cmake && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-mkdir"
   DESC = Creating directories for 'h743_hal+h743_hal'
   restat = 1
 
@@ -178,7 +178,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-mkdir | ${
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch-info.txt h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-patch"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-patch"
   DESC = No patch step for 'h743_hal+h743_hal'
   restat = 1
 
@@ -187,7 +187,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-patch | ${
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-test
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-test | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-test: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-install || h743_hal+h743_hal-build h743_hal+h743_hal-configure h743_hal+h743_hal-database h743_hal+h743_hal-executes
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-test"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp\1 && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-test"
   DESC = No test step for 'h743_hal+h743_hal'
   restat = 1
 
@@ -196,7 +196,7 @@ build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-test | ${c
 # Custom command for h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update
 
 build h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update | ${cmake_ninja_workdir}h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update: CUSTOM_COMMAND h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-update-info.txt h743_hal+h743_hal\src\h743_hal+h743_hal-stamp\h743_hal+h743_hal-download
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\Desktop_Floder\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-update"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D D:\My_Git\2025-G-RE\2025-G\MDK-ARM\tmp && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E echo_append && D:\Users\47306\AppData\Roaming\SPB_Data\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.31.5\bin\cmake.exe -E touch D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-update"
   DESC = No update step for 'h743_hal+h743_hal'
   restat = 1
 
@@ -233,7 +233,7 @@ build CMakeFiles\h743_hal+h743_hal-database | ${cmake_ninja_workdir}CMakeFiles\h
 # =============================================================================
 
 #############################################
-# Folder: D:/Desktop_Floder/2025-G/MDK-ARM/tmp
+# Folder: D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp
 
 build all: phony h743_hal+h743_hal
 

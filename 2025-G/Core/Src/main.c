@@ -214,25 +214,6 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
- void UartProc(void)
-{
-    if (uart1_rx_flag) {
-        SCB_InvalidateDCache_by_Addr((uint32_t *)uart1_rx_buf, UART_RX_BUF_SIZE);
-        // 在这里处理 USART1 收到的数据
-        uart1_rx_flag = 0;
-    }
-
-    if (uart3_rx_flag) {
-        SCB_InvalidateDCache_by_Addr((uint32_t *)uart3_rx_buf, UART_RX_BUF_SIZE);
-        /* 逐字节喂入协议解析器 */
-        for (uint16_t i = 0; i < uart3_rx_len; i++) {
-            Protocol_ParseByte(uart3_rx_buf[i]);
-        }
-        uart3_rx_flag = 0;
-    }
-}
-
 void APP_Proc(void)
 {
     switch (g_sys_mode) {
@@ -243,20 +224,24 @@ void APP_Proc(void)
             uint32_t freq_hz = s_last_freq_raw / 10;   /* 0.1Hz → Hz */
             AD9910_FreWrite(freq_hz);
             AD9910_AmpWrite(amp);
-            HMI_SendFloat("t9.txt", s_last_vpp_raw * 0.1f, 1);
-            HMI_SendFloat("t10.txt", (float)freq_hz, 1);
+            UART3_Printf("t9.txt=\"%.1f\"\xff\xff\xff", s_last_vpp_raw * 0.1f);
+            UART3_Printf("t10.txt=\"%.1f\"\xff\xff\xff", (float)freq_hz);
         }
         break;
 
     case MODE_CONTROL:
         if (s_data_ready) {
             s_data_ready = false;
-            uint16_t amp = VppToAmp(s_last_vpp_raw, CONTROL_AMP_MUL);
-            uint32_t freq_hz = s_last_freq_raw / 10;
+            uint32_t freq_hz = s_last_freq_raw / 10;   /* 0.1Hz → Hz */
+            float comp_k = AmpComp_GetK(freq_hz);
+            float amp_f = (float)VppToAmp(s_last_vpp_raw, CONTROL_AMP_MUL) * comp_k;
+            if (amp_f > 16384.0f) amp_f = 16384.0f;
+            uint16_t amp = (uint16_t)amp_f;
             AD9910_FreWrite(freq_hz);
             AD9910_AmpWrite(amp);
-            HMI_SendFloat("t9.txt", s_last_vpp_raw * 0.1f, 1);
-            HMI_SendFloat("t10.txt", (float)freq_hz, 1);
+            UART3_Printf("t9.txt=\"%.1f\"\xff\xff\xff", s_last_vpp_raw * 0.1f);
+            UART3_Printf("t10.txt=\"%.1f\"\xff\xff\xff", (float)freq_hz);
+            
         }
         break;
 
@@ -273,12 +258,32 @@ void APP_Proc(void)
         break;
 
     case MODE_IDLE:
-
+         AD9910_AmpWrite(0);
     default:
         break;
     
 }
 }
+
+ void UartProc(void)
+{
+    if (uart1_rx_flag) {
+        SCB_InvalidateDCache_by_Addr((uint32_t *)uart1_rx_buf, UART_RX_BUF_SIZE);
+        uart1_rx_flag = 0;
+        Serial_RxInit(&huart1);
+    }
+
+    if (uart3_rx_flag) {
+        SCB_InvalidateDCache_by_Addr((uint32_t *)uart3_rx_buf, UART_RX_BUF_SIZE);
+        for (uint16_t i = 0; i < uart3_rx_len; i++) {
+            Protocol_ParseByte(uart3_rx_buf[i]);
+        }
+        uart3_rx_flag = 0;
+        Serial_RxInit(&huart3);
+    }
+}
+
+
 /* 10ms 周期*/
 void Task_10ms(uint16_t ticks)
 {

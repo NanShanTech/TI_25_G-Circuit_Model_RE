@@ -2,28 +2,28 @@
 	"sources" : 
 	[
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database"
 		},
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database.rule"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/CMakeFiles/h743_hal+h743_hal-database.rule"
 		},
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database.rule"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-database.rule"
 		},
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure.rule"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-configure.rule"
 		},
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-patch.rule"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-patch.rule"
 		},
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-update.rule"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-update.rule"
 		},
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-download.rule"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-download.rule"
 		},
 		{
-			"file" : "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-mkdir.rule"
+			"file" : "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal/src/h743_hal+h743_hal-stamp/h743_hal+h743_hal-mkdir.rule"
 		}
 	],
 	"target" : 

@@ -79,11 +79,45 @@ static void Frame_ParsePayload(const uint8_t *buf, uint32_t *vpp, uint32_t *freq
 uint16_t VppToAmp(uint32_t vpp_raw, uint8_t mul)
 {
     float vpp = (float)(int32_t)vpp_raw * 0.1f;   /* 0.1V → V */
-    float amp = vpp * 2000;                   /* V → DAC 码 */
+    float amp = vpp * 4866.0f;                   /* V → DAC 码 */
     amp *= (float)mul;
     if (amp < 0.0f) amp = 0.0f;
-    if (amp > 1023.0f) amp = 1023.0f;
+    if (amp > 16384.0f) amp = 16384.0f;
     return (uint16_t)amp;
+}
+
+/* ================================================================
+ * 幅值补偿查找表 — 100Hz ~ 3kHz，步进 100Hz
+ * K(f) = sqrt((1 - 1e-8*(2πf)²)² + (3e-4*2πf)²) / 5
+ * ================================================================ */
+static const float s_amp_comp_tbl[] = {
+    0.2027f, 0.2108f, 0.2236f, 0.2405f, 0.2608f,  /*  100 ~  500 */
+    0.2839f, 0.3093f, 0.3366f, 0.3655f, 0.3960f,  /*  600 ~ 1000 */
+    0.4276f, 0.4606f, 0.4946f, 0.5297f, 0.5659f,  /* 1100 ~ 1500 */
+    0.6032f, 0.6415f, 0.6809f, 0.7213f, 0.7628f,  /* 1600 ~ 2000 */
+    0.8054f, 0.8491f, 0.8940f, 0.9400f, 0.9871f,  /* 2100 ~ 2500 */
+    1.0354f, 1.0850f, 1.1357f, 1.1877f, 1.2409f,  /* 2600 ~ 3000 */
+};
+
+#define COMP_TBL_START  100
+#define COMP_TBL_STEP   100
+#define COMP_TBL_COUNT  (sizeof(s_amp_comp_tbl) / sizeof(s_amp_comp_tbl[0]))
+
+float AmpComp_GetK(uint32_t freq_hz)
+{
+    if (freq_hz <= COMP_TBL_START)
+        return s_amp_comp_tbl[0];
+
+    uint32_t last_freq = COMP_TBL_START + (COMP_TBL_COUNT - 1) * COMP_TBL_STEP;
+    if (freq_hz >= last_freq)
+        return s_amp_comp_tbl[COMP_TBL_COUNT - 1];
+
+    /* 线性插值 */
+    uint32_t idx  = (freq_hz - COMP_TBL_START) / COMP_TBL_STEP;
+    uint32_t f_lo = COMP_TBL_START + idx * COMP_TBL_STEP;
+    float    frac = (float)(freq_hz - f_lo) / (float)COMP_TBL_STEP;
+
+    return s_amp_comp_tbl[idx] + (s_amp_comp_tbl[idx + 1] - s_amp_comp_tbl[idx]) * frac;
 }
 
 void Protocol_ParseByte(uint8_t byte)

@@ -1,4 +1,4 @@
-# Install script for directory: D:/Desktop_Floder/2025-G/MDK-ARM/tmp/h743_hal+h743_hal
+# Install script for directory: D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/h743_hal+h743_hal
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,7 +40,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/install_local_manifest.txt"
+  file(WRITE "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/1/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -56,6 +56,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "D:/My_Git/2025-G-RE/2025-G/MDK-ARM/tmp/1/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
