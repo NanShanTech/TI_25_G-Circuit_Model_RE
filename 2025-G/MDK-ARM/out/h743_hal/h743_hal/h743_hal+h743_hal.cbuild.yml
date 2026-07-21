@@ -294,10 +294,6 @@ build:
           category: header
     - group: Task
       files:
-        - file: ../../../../App/measure/freq_measure.c
-          category: sourceC
-        - file: ../../../../App/measure/freq_measure.h
-          category: header
         - file: ../../../../App/task/scheduler.c
           category: sourceC
         - file: ../../../../App/task/scheduler.h

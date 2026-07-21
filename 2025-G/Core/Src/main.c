@@ -29,7 +29,6 @@
 /* USER CODE BEGIN Includes */
 #include "app_types.h"
 #include "fft_analyzer.h"
-#include "freq_measure.h"
 #include "scheduler.h"
 #include "serial.h"
 #include "protocol.h"
@@ -57,12 +56,12 @@
 /* USER CODE BEGIN PV */
 
 Wave_Struct   g_wave_info;
-FreqMeasure   g_freq_measure;
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void PeriphCommonClock_Config(void);
 static void MPU_Config(void);
 /* USER CODE BEGIN PFP */
 
@@ -71,11 +70,16 @@ static void MPU_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 static __attribute__((section(".AXI_SRAM"))) uint16_t adc_1_buffer[FFT_N];
-static __attribute__((section(".AXI_SRAM"))) fftin_t  s_fft_in;
-static __attribute__((section(".AXI_SRAM"))) fftout_t s_fft_out ;
+static __attribute__((section(".AXI_SRAM"))) uint16_t adc_2_buffer[FFT_N];//用于学习模式 两路ADC同步采样以获取幅频 相频曲线
+
+
+static __attribute__((section(".AXI_SRAM"))) uint16_t adc_buffer[1024];//滤波模式ADC双缓冲
+static __attribute__((section(".AXI_SRAM"))) uint16_t dac_buffer[1024];//DAC双缓冲
 
 volatile uint8_t adc1_flag;
+volatile uint8_t adc2_flag;//学习模式两路ADC同步采样标志位
 
+/* ADC DMA 全缓冲完成回调 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 	if(hadc->Instance==ADC1)
@@ -83,6 +87,28 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 		if(adc1_flag==0)
 			adc1_flag = 1;
 	}
+  	if(hadc->Instance==ADC2)
+	{
+		if(adc2_flag==0)
+			adc2_flag = 1;
+	}
+}
+/* ADC DMA 半缓冲完成回调 */
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
+{
+
+}
+
+/* DAC DMA 全缓冲完成回调 */
+void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef *hdac)
+{
+
+}
+
+/* DAC DMA 半缓冲完成回调*/
+void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac)
+{
+
 }
 /* USER CODE END 0 */
 
@@ -120,6 +146,9 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
+  /* Configure the peripherals common clocks */
+  PeriphCommonClock_Config();
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
@@ -128,18 +157,18 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_ADC1_Init();
-  MX_TIM2_Init();
   MX_USART3_UART_Init();
   MX_USART1_UART_Init();
   MX_DAC1_Init();
   MX_TIM6_Init();
+  MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
 
   Serial_RxInit(&huart3);
-  // FreqMeasure_Init(&g_freq_measure, &htim2);
   Scheduler_Init();
   Init_AD9910();
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_1_buffer, FFT_N);
+    HAL_ADC_Start_DMA(&hadc2, (uint32_t *)adc_2_buffer, FFT_N);
   HAL_TIM_Base_Start(&htim6);
   /* USER CODE END 2 */
 
@@ -213,6 +242,32 @@ void SystemClock_Config(void)
   }
 }
 
+/**
+  * @brief Peripherals Common Clock Configuration
+  * @retval None
+  */
+void PeriphCommonClock_Config(void)
+{
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+
+  /** Initializes the peripherals clock
+  */
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInitStruct.PLL2.PLL2M = 2;
+  PeriphClkInitStruct.PLL2.PLL2N = 12;
+  PeriphClkInitStruct.PLL2.PLL2P = 2;
+  PeriphClkInitStruct.PLL2.PLL2Q = 2;
+  PeriphClkInitStruct.PLL2.PLL2R = 2;
+  PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_3;
+  PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOMEDIUM;
+  PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
+  PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
 /* USER CODE BEGIN 4 */
 void APP_Proc(void)
 {
@@ -241,20 +296,29 @@ void APP_Proc(void)
             AD9910_AmpWrite(amp);
             UART3_Printf("t9.txt=\"%.1f\"\xff\xff\xff", s_last_vpp_raw * 0.1f);
             UART3_Printf("t10.txt=\"%.1f\"\xff\xff\xff", (float)freq_hz);
-            
         }
         break;
 
     case MODE_LEARN:
         if (adc1_flag) {
             HAL_ADC_Stop_DMA(&hadc1);
+
+          //TODO:学习模式 只做一遍 获取幅频与相频特性曲线以及滤波器系数 曲线打到串口屏上 学完之后退回到空闲状态 等待开始滤波的指令
+
+
+            HMI_SendStr("tm0.en", "0");//关闭串口屏计数器
+            // HMI_DrawWaveform(&g_wave_info);//绘制幅频与相频特性曲线，暂未实现具体逻辑 需要将幅频 相频曲线映射到长300 高200的坐标上
             adc1_flag = 0;
             g_sys_mode = MODE_IDLE;
         }
         break;
 
     case MODE_FILTER:
-
+     //TODO:滤波模式  
+     // ADC以及DAC需要使用两个不同的数组  
+     // ADC写完半缓冲>通过数字滤波器计算之后搬到DAC半缓冲     
+     // DAC消耗完半缓冲>CPU再把计算后的数据填到刚消耗完的半缓冲
+     //均采用circular模式 双缓冲中断会置标志位
         break;
 
     case MODE_IDLE:

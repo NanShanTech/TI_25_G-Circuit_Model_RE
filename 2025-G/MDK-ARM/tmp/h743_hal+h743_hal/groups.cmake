@@ -207,12 +207,10 @@ target_link_libraries(Group_MyDrive PUBLIC
 
 # group Task
 add_library(Group_Task OBJECT
-  "${SOLUTION_ROOT}/../App/measure/freq_measure.c"
   "${SOLUTION_ROOT}/../App/task/scheduler.c"
 )
 target_include_directories(Group_Task PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>
-  "${SOLUTION_ROOT}/../App/measure"
   "${SOLUTION_ROOT}/../App/task"
 )
 target_compile_definitions(Group_Task PUBLIC

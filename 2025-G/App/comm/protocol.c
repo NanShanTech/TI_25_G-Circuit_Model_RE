@@ -79,7 +79,7 @@ static void Frame_ParsePayload(const uint8_t *buf, uint32_t *vpp, uint32_t *freq
 uint16_t VppToAmp(uint32_t vpp_raw, uint8_t mul)
 {
     float vpp = (float)(int32_t)vpp_raw * 0.1f;   /* 0.1V → V */
-    float amp = vpp * 4866.0f;                   /* V → DAC 码 */
+    float amp = vpp * 4866.0f;                   /* V → DAC 码，修改乘的系数以调参 */
     amp *= (float)mul;
     if (amp < 0.0f) amp = 0.0f;
     if (amp > 16384.0f) amp = 16384.0f;

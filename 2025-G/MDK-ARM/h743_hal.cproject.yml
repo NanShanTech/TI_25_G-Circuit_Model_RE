@@ -156,8 +156,6 @@ project:
         - file: ../App/comm/protocol.h
     - group: Task
       files:
-        - file: ../App/measure/freq_measure.c
-        - file: ../App/measure/freq_measure.h
         - file: ../App/task/scheduler.c
         - file: ../App/task/scheduler.h
     - group: fft

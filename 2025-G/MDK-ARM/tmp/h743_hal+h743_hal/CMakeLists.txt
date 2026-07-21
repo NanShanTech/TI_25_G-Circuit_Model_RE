@@ -58,6 +58,7 @@ target_include_directories(${CONTEXT} PUBLIC
     "${SOLUTION_ROOT}/../Drivers/CMSIS/Include"
     "${SOLUTION_ROOT}/../Hardware"
     "${SOLUTION_ROOT}/../Drivers/CMSIS/DSP/Include"
+    "${SOLUTION_ROOT}/../App/measure"
     "${SOLUTION_ROOT}/../App/utils"
   >
   "${SOLUTION_ROOT}/RTE/_h743_hal"
@@ -68,7 +69,6 @@ target_include_directories(${CONTEXT} PUBLIC
   "${SOLUTION_ROOT}/../long_fft"
   "${SOLUTION_ROOT}/../App/dds"
   "${SOLUTION_ROOT}/../App/comm"
-  "${SOLUTION_ROOT}/../App/measure"
   "${SOLUTION_ROOT}/../App/task"
   "${SOLUTION_ROOT}/../App/fft"
 )

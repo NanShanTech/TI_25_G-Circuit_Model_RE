@@ -13,8 +13,6 @@ typedef enum {
     MODE_FILTER,
 } SysMode_t;
 
-
-
 /* 控制模式幅度额外乘数 */
 #define CONTROL_AMP_MUL 1
 
@@ -29,7 +27,7 @@ extern uint32_t s_last_freq_raw;
 /* 逐字节喂入串口接收数据 */
 void Protocol_ParseByte(uint8_t byte);
 
-/* Vpp 原始值 → AD9959 幅度值 */
+/* Vpp 原始值 → ad9910 幅度值 */
 uint16_t VppToAmp(uint32_t vpp_raw, uint8_t mul);
 
 /* 幅值补偿查找表：根据频率 Hz 返回补偿系数 K(f) */
