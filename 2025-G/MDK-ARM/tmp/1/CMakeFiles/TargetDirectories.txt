@@ -1,0 +1,13 @@
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/database.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/h743_hal+h743_hal.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_Application_MDK-ARM.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_Application_User_Core.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_Drivers_STM32H7xx_HAL_Driver.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_Drivers_CMSIS.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_APP.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_long_fft.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_MyDrive.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_Task.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/Group_fft.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/edit_cache.dir
+D:/Desktop_Floder/2025-G/MDK-ARM/tmp/1/CMakeFiles/rebuild_cache.dir

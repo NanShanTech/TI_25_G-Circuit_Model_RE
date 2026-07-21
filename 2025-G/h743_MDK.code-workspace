@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "MDK-ARM",
+			"path": "MDK-ARM"
+		}
+	],
+	"settings": {
+		"debug.hideSlowPreLaunchWarning": true,
+		"debug.showInStatusBar": "never",
+		"clangd.arguments": [
+			"--compile-commands-dir=d:\\Desktop_Floder\\2025-G\\MDK-ARM\\out\\h743_hal\\h743_hal"
+		],
+		"cmsis-csolution.autoDebugLaunch": true,
+		"memory-inspector.addressPadding": "32bit",
+		"memory-inspector.groupings.groupsPerRow": "Autofit",
+		"memory-inspector.groupings.MAUsPerGroup": 4,
+		"memory-inspector.scrollingBehavior": "Auto-Append",
+		"cdt.debug.sourceHighlighting": false
+	}
+}

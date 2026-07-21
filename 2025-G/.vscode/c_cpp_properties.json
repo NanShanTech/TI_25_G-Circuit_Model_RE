@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "name": "STM32H743_AC6",
+            "compileCommands": "${workspaceFolder}/MDK-ARM/out/h743_hal/h743_hal/compile_commands.json",
+            "includePath": [
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+                "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/App",
+                "${workspaceFolder}/App/fft",
+                "${workspaceFolder}/App/comm",
+                "${workspaceFolder}/App/dds",
+                "${workspaceFolder}/App/measure",
+                "${workspaceFolder}/App/task",
+                "${workspaceFolder}/long_fft",
+                "${workspaceFolder}/Middlewares/ST/ARM/DSP/Inc"
+            ],
+            "defines": [
+                "STM32H743xx",
+                "USE_HAL_DRIVER",
+                "ARM_MATH_CM7",
+                "__FPU_PRESENT=1"
+            ],
+            "intelliSenseMode": "arm",
+            "cStandard": "c99",
+            "compilerPath": "d:/Users/47306/AppData/Roaming/SPB_Data/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/armclang.exe"
+        }
+    ],
+    "version": 4
+}

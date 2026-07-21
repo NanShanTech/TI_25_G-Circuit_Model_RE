@@ -1,0 +1,5 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "debug.showInStatusBar": "never",
+    "cmake.sourceDirectory": "${workspaceFolder}/MDK-ARM/tmp"
+}

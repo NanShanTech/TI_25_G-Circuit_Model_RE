@@ -1,0 +1,19 @@
+build-idx:
+  generated-by: csolution version 2.14.1+p9-g859cb6c9
+  csolution: h743_hal.csolution.yml
+  cbuild-run: out/h743_hal+h743_hal.cbuild-run.yml
+  tmpdir: tmp
+  cprojects:
+    - cproject: h743_hal.cproject.yml
+  cbuilds:
+    - cbuild: out/h743_hal/h743_hal/h743_hal+h743_hal.cbuild.yml
+      project: h743_hal
+      configuration: +h743_hal
+      messages:
+        info:
+          - h743_hal.cbuild-pack.yml - file is already up-to-date
+          - h743_hal+h743_hal.cbuild-run.yml - file is already up-to-date
+          - h743_hal+h743_hal.cbuild.yml - file is already up-to-date
+      packs-unused:
+        - pack: ARM::CMSIS-DSP@1.16.2
+        - pack: ARM::CMSIS-NN@4.1.0

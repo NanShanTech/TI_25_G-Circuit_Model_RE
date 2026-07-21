@@ -1,0 +1,5 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "debug.showInStatusBar": "never",
+    "cmake.sourceDirectory": "D:/My_Git/Stm32H743_TI_Cup/h743_MDK/MDK-ARM/tmp"
+}

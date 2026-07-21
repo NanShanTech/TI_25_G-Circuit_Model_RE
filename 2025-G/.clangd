@@ -1,0 +1,22 @@
+CompileFlags:
+  CompilationDatabase: MDK-ARM/out/h743_hal/h743_hal
+  Add:
+    - -include
+    - MDK-ARM/out/h743_hal/h743_hal/compile_macros.h
+    - -ICore/Inc
+    - -IDrivers/CMSIS/Include
+    - -IDrivers/CMSIS/Device/ST/STM32H7xx/Include
+    - -IDrivers/STM32H7xx_HAL_Driver/Inc
+    - -IDrivers/STM32H7xx_HAL_Driver/Inc/Legacy
+    - -IApp
+    - -IApp/fft
+    - -IApp/comm
+    - -IApp/dds
+    - -IApp/measure
+    - -IApp/task
+    - -Ilong_fft
+    - -IMiddlewares/ST/ARM/DSP/Inc
+    - -DSTM32H743xx
+    - -DUSE_HAL_DRIVER
+    - -DARM_MATH_CM7
+    - -D__FPU_PRESENT=1
