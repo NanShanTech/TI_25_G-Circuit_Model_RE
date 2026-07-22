@@ -250,6 +250,14 @@ build:
           category: sourceC
         - file: ../../../../App/adc/adc_app.h
           category: header
+        - file: ../../../../App/sweep/sweep_learn.c
+          category: sourceC
+        - file: ../../../../App/sweep/sweep_learn.h
+          category: header
+        - file: ../../../../App/filter/iir_filter.c
+          category: sourceC
+        - file: ../../../../App/filter/iir_filter.h
+          category: header
     - group: long_fft
       files:
         - file: ../../../../long_fft/arm_bitreversal2_extra.c

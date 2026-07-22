@@ -34,6 +34,8 @@
 #include "protocol.h"
 #include "ad9910.h"
 #include "adc_app.h"
+#include "sweep_learn.h"
+#include "iir_filter.h"
 
 /* USER CODE END Includes */
 
@@ -73,34 +75,66 @@ static __attribute__((section(".AXI_SRAM"))) uint16_t adc_1_buffer[FFT_N];
 static __attribute__((section(".AXI_SRAM"))) uint16_t adc_2_buffer[FFT_N];//用于学习模式 两路ADC同步采样以获取幅相频曲线
 
 
-static __attribute__((section(".AXI_SRAM"))) uint16_t adc_buffer[1024];//滤波模式ADC双缓
-static __attribute__((section(".AXI_SRAM"))) uint16_t dac_buffer[1024];//DAC双缓冲
+#define FILTER_BUFFER_SAMPLES  256U
+#define FILTER_HALF_SAMPLES    (FILTER_BUFFER_SAMPLES / 2U)
+#define DAC_MID_CODE           2048U
+
+static __attribute__((section(".AXI_SRAM"), aligned(32))) uint16_t adc_buffer[FILTER_BUFFER_SAMPLES];//滤波模式ADC缓冲
+static __attribute__((section(".AXI_SRAM"), aligned(32))) uint16_t dac_buffer[FILTER_BUFFER_SAMPLES];//DAC缓冲
 
 volatile uint8_t adc1_flag;
 volatile uint8_t adc2_flag;//学习模式两路ADC同步采样标志
 
-volatile uint8_t adc_filter_half; // 滤波模式:0=后半缓冲进行 1=前半缓冲就绪 2=后半缓冲就绪
-volatile uint8_t dac_filter_half; 
+volatile uint8_t dac_filter_half;
+volatile uint8_t iir_process_flags; // bit0=前半缓冲就绪(ConvHalfCplt) bit1=后半缓冲就绪(ConvCplt)
+volatile uint8_t iir_overrun;      // 1=发生过半缓冲覆盖 主循环处理不及时
+
+static void filter_process_half(uint32_t adc_offs, uint32_t dac_offs)
+{
+    SCB_InvalidateDCache_by_Addr(&adc_buffer[adc_offs],
+                                 FILTER_HALF_SAMPLES * sizeof(uint16_t));
+
+    if (iir_filter_is_ready()) {
+        iir_filter_process_block(adc_buffer, dac_buffer, adc_offs, dac_offs,
+                                 FILTER_HALF_SAMPLES);
+    } else {
+        for (uint16_t i = 0; i < FILTER_HALF_SAMPLES; i++) {
+            uint32_t val = (uint32_t)adc_buffer[adc_offs + i] * 3 / 2;
+            if (val > 4095) val = 4095;
+            dac_buffer[dac_offs + i] = (uint16_t)val;
+        }
+    }
+
+    SCB_CleanDCache_by_Addr(&dac_buffer[dac_offs],
+                            FILTER_HALF_SAMPLES * sizeof(uint16_t));
+}
 
      void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
      {
          if (hadc->Instance == ADC1 && g_sys_mode == MODE_FILTER) {
-             return; 
-        }
-      }
+             if (iir_process_flags & 0x01U) iir_overrun = 1;
+             iir_process_flags |= 0x01U;  // 仅置标志位，处理在主循环
+         }
+     }
 
      void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
      {
-         if (hadc->Instance == ADC1 && g_sys_mode == MODE_FILTER) {
-                       if (hadc->Instance == ADC1 && g_sys_mode == MODE_FILTER) {
-                 for (uint16_t i = 0; i < 512; i++) {
-                    uint32_t val = (uint32_t)adc_buffer[i] * 3 / 2;   // ×1.5
-                     if (val > 4095) val = 4095;                       // 钳位到DAC 12位量程
-                    dac_buffer[i] = (uint16_t)val;
-                 }
+         /* 扫频模式：通知扫频模块 ADC 采集完成 */
+         if (sweep_learn_is_sweeping()) {
+             if (hadc->Instance == ADC1) {
+                 sweep_learn_notify_adc_done();
+             }
              return;
          }
-         // ---- 非滤波器模式
+
+         /* 滤波模式：后半 ADC 就绪，主循环写回后半 DAC */
+         if (hadc->Instance == ADC1 && g_sys_mode == MODE_FILTER) {
+             if (iir_process_flags & 0x02U) iir_overrun = 1;
+             iir_process_flags |= 0x02U;  // 仅置标志位，处理在主循环
+             return;
+         }
+
+         /* 普通模式：标记采集完成 */
          if (hadc->Instance == ADC1) {
              if (adc1_flag == 0) adc1_flag = 1;
          }
@@ -108,7 +142,6 @@ volatile uint8_t dac_filter_half;
              if (adc2_flag == 0) adc2_flag = 1;
          }
      }
-    }
 
      void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac)
      {
@@ -185,6 +218,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+      /* 滤波模式高速轮询：中断仅置标志位，主循环中处理半缓冲 */
+      if (g_sys_mode == MODE_FILTER) {
+          uint8_t flags;
+          __disable_irq();
+          flags = iir_process_flags;
+          iir_process_flags = 0;
+          __enable_irq();
+          if (flags & 0x01U) filter_process_half(0, 0);
+          if (flags & 0x02U) {
+              filter_process_half(FILTER_HALF_SAMPLES, FILTER_HALF_SAMPLES);
+          }
+      }
       Scheduler_Run();
     /* USER CODE END WHILE */
 
@@ -282,26 +327,90 @@ void APP_Proc(void)
 {
     static SysMode_t prev_mode = MODE_IDLE;
 
-    if (prev_mode != MODE_FILTER && g_sys_mode == MODE_FILTER) {
-        HAL_ADC_Stop_DMA(&hadc1);
-        HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
-        memset(adc_buffer, 0, sizeof(adc_buffer));
-        memset(dac_buffer, 0, sizeof(dac_buffer));
-        adc_filter_half = 0;
-        HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_buffer, 1024);
-        HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint32_t *)dac_buffer, 1024, DAC_ALIGN_12B_R);
-    }//
+     //1. 退出动作：离开某模式时的清理工作
+    if (prev_mode != g_sys_mode) {
+        switch (prev_mode) {
+        case MODE_FILTER:
+            HAL_TIM_Base_Stop(&htim6);
+            HAL_ADC_Stop_DMA(&hadc1);
+            HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
 
-    if (prev_mode == MODE_FILTER && g_sys_mode != MODE_FILTER) {
-        HAL_ADC_Stop_DMA(&hadc1);
-        HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
-        HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_1_buffer, FFT_N);
-        adc_filter_half = 0;
+            /* 恢复 ADC1 FFT 模式（ADC2 始终在运行，无需操作） */
+            HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_1_buffer, FFT_N);
+
+            __HAL_TIM_SET_COUNTER(&htim6, 0);
+            __HAL_TIM_CLEAR_FLAG(&htim6, TIM_FLAG_UPDATE);
+            HAL_TIM_Base_Start(&htim6);
+            break;
+        default:
+            break;
+        }
     }
 
-    prev_mode = g_sys_mode;
+     //2. 进入动作：进入某模式时的初始化工作
+    if (prev_mode != g_sys_mode) {
+        switch (g_sys_mode) {
+        case MODE_LEARN: {
+            /* 模拟二阶带通：f0=15kHz, Q=5, K=1.0 */
+            sweep_learn_sim_bandpass(10000.0f, 5.0f, 5.0f);
 
+            const iir_coeff_t *c = sweep_learn_get_coeffs();
+            if (c->valid) {
+                iir_filter_init(c->b0, c->b1, c->b2, c->a1, c->a2);
+            }
+
+            const fit_result_t *fit = sweep_learn_get_fit_result();
+            UART3_Printf("t2.txt=\"%s\"\xff\xff\xff", sweep_learn_model_name(fit->model));
+            UART3_Printf("tm0.en=0\xff\xff\xff");
+
+            g_sys_mode = MODE_IDLE;
+            break;
+        }
+        case MODE_FILTER: {
+            /* 同步 ADC/DAC DMA：停 TIM6 → 停外设 → 清缓冲 → 同时启动 */
+            HAL_TIM_Base_Stop(&htim6);
+            HAL_ADC_Stop_DMA(&hadc1);
+            HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
+
+            memset(adc_buffer, 0, sizeof(adc_buffer));
+            for (uint32_t i = 0; i < FILTER_BUFFER_SAMPLES; i++) {
+                dac_buffer[i] = DAC_MID_CODE;
+            }
+
+            iir_process_flags = 0;
+            iir_overrun = 0;
+
+            const iir_coeff_t *c = sweep_learn_get_coeffs();
+            if (c->valid) {
+                iir_filter_init(c->b0, c->b1, c->b2, c->a1, c->a2);
+            }
+
+            /* ADC 和 DAC DMA 同时从 0 开始 */
+            HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adc_buffer,
+                              FILTER_BUFFER_SAMPLES);
+            HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1,
+                              (uint32_t *)dac_buffer, FILTER_BUFFER_SAMPLES,
+                              DAC_ALIGN_12B_R);
+
+            /* 复位 TIM6 计数器，ADC/DAC 从同一个触发沿起步 */
+            __HAL_TIM_SET_COUNTER(&htim6, 0);
+            __HAL_TIM_CLEAR_FLAG(&htim6, TIM_FLAG_UPDATE);
+            HAL_TIM_Base_Start(&htim6);
+            break;
+        }
+        default:
+            break;
+        }
+        prev_mode = g_sys_mode;
+    }
+
+
+     //3. 稳态执行：当前模式的周期性工作
     switch (g_sys_mode) {
+    case MODE_IDLE:
+        AD9910_AmpWrite(0);
+        break;
+
     case MODE_SINE_WAVE:
         if (s_data_ready) {
             s_data_ready = false;
@@ -311,7 +420,7 @@ void APP_Proc(void)
             AD9910_AmpWrite(amp);
             UART3_Printf("t9.txt=\"%.1f\"\xff\xff\xff", s_last_vpp_raw * 0.1f);
             UART3_Printf("t10.txt=\"%.1f\"\xff\xff\xff", (float)freq_hz);
-        }//基础题第二问信号发生器
+        }
         break;
 
     case MODE_CONTROL:
@@ -326,34 +435,20 @@ void APP_Proc(void)
             AD9910_AmpWrite(amp);
             UART3_Printf("t9.txt=\"%.1f\"\xff\xff\xff", s_last_vpp_raw * 0.1f);
             UART3_Printf("t10.txt=\"%.1f\"\xff\xff\xff", (float)freq_hz);
-        }//基础题第二问控制输出
-        break;
-
-    case MODE_LEARN:
-        if (adc1_flag) {
-            HAL_ADC_Stop_DMA(&hadc1);
-
-          //TODO:学习模式 只做一次 获取幅频与相频特性曲线以及滤波器系数 曲线打到串口屏上 学完之后退回到空闲状态 等待开始滤波的指令
-
-
-
-            HAL_Delay(1000);
-            HMI_SendStr("tm0.en", "0");//关闭串口屏计数器
-            // HMI_DrawWaveform(&g_wave_info);//绘制幅频与相频特性曲线，暂未实现具体逻辑 需要将幅频 相频曲线映射到长300 宽200的坐标上
-            adc1_flag = 0;
-            g_sys_mode = MODE_IDLE;
         }
         break;
 
-	case MODE_FILTER:
-		break;
+    case MODE_LEARN:
+        /* 一次性任务，进入时已执行完毕 */
+        break;
 
-    case MODE_IDLE:
-         AD9910_AmpWrite(0);
+    case MODE_FILTER:
+        /* 滤波处理在主循环 while(1) 中高速轮询，不经过 10ms 任务 */
+        break;
+
     default:
         break;
-    
-}
+    }
 }
 
  void UartProc(void)

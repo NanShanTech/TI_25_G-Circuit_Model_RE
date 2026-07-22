@@ -27,6 +27,8 @@ h743_hal/serial.o: ..\App\comm\serial.c ..\App\comm\serial.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dac.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dac_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h \
@@ -42,6 +44,6 @@ h743_hal/serial.o: ..\App\comm\serial.c ..\App\comm\serial.h \
   ..\Drivers\CMSIS\DSP\Include\arm_math.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h ..\App\app_config.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h

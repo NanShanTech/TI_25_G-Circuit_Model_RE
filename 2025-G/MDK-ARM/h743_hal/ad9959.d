@@ -27,6 +27,8 @@ h743_hal/ad9959.o: ..\App\dds\ad9959.c ..\App\dds\ad9959.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dac.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dac_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h \
@@ -41,4 +43,4 @@ h743_hal/ad9959.o: ..\App\dds\ad9959.c ..\App\dds\ad9959.h \
   ..\Drivers\CMSIS\DSP\Include\arm_math.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h ..\App\utils\delay.h
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h

@@ -131,6 +131,10 @@ project:
         - file: ../App/app_types.h
         - file: ../App/adc/adc_app.c
         - file: ../App/adc/adc_app.h
+        - file: ../App/sweep/sweep_learn.c
+        - file: ../App/sweep/sweep_learn.h
+        - file: ../App/filter/iir_filter.c
+        - file: ../App/filter/iir_filter.h
     - group: long_fft
       files:
         - file: ../long_fft/arm_bitreversal2_extra.c

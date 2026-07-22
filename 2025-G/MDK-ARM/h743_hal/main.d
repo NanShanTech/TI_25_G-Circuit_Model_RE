@@ -27,6 +27,8 @@ h743_hal/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_adc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc_ex.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dac.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dac_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h \
@@ -42,9 +44,10 @@ h743_hal/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h ..\Core\Inc\adc.h \
-  ..\Core\Inc\main.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\App\app.h \
-  ..\App\app_config.h ..\App\app_types.h ..\App\measure\freq_measure.h \
-  ..\App\app_types.h ..\App\task\adc_task.h ..\App\comm\serial.h \
-  ..\App\dds\ad9959.h ..\App\task\scheduler.h ..\App\task\tasks.h \
-  ..\App\fft\fft_analyzer.h
+  ..\Core\Inc\main.h ..\Core\Inc\dac.h ..\Core\Inc\dma.h \
+  ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
+  ..\App\app_types.h ..\App\fft\fft_analyzer.h ..\App\task\scheduler.h \
+  ..\App\comm\serial.h ..\App\comm\protocol.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\App\dds\ad9910.h \
+  ..\App\adc\adc_app.h ..\App\sweep\sweep_learn.h \
+  ..\App\filter\iir_filter.h

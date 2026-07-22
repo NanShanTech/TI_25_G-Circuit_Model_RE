@@ -66,6 +66,8 @@ target_include_directories(${CONTEXT} PUBLIC
   "${CMSIS_PACK_ROOT}/Keil/STM32H7xx_DFP/2.7.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
   "${SOLUTION_ROOT}/../App"
   "${SOLUTION_ROOT}/../App/adc"
+  "${SOLUTION_ROOT}/../App/sweep"
+  "${SOLUTION_ROOT}/../App/filter"
   "${SOLUTION_ROOT}/../long_fft"
   "${SOLUTION_ROOT}/../App/dds"
   "${SOLUTION_ROOT}/../App/comm"
