@@ -1000,7 +1000,7 @@ static void sweep_restore_adc_dma(void)
     hdma_adc1.Init.Mode     = DMA_CIRCULAR;
     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
     hdma_adc2.Init.Mode     = DMA_CIRCULAR;
-    hdma_adc2.Init.Priority = DMA_PRIORITY_LOW;
+    hdma_adc2.Init.Priority = DMA_PRIORITY_VERY_HIGH;
 
     (void)HAL_DMA_Init(&hdma_adc1);
     (void)HAL_DMA_Init(&hdma_adc2);

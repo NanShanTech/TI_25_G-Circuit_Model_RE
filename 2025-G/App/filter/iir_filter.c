@@ -47,7 +47,7 @@ void iir_filter_process_block(const uint16_t *adc_buf, uint16_t *dac_buf,
         float dac = DAC_MID_CODE + (y * (DAC_MID_CODE - 1.0f) * IIR_OUTPUT_GAIN);
         if (dac < 0.0f)       dac = 0.0f;
         if (dac > DAC_MAX_CODE) dac = DAC_MAX_CODE;
-        dac_buf[dac_offs + i] = (uint16_t)(dac + 0.5f);
+        dac_buf[dac_offs + i] = (uint16_t)(dac + 0.5f)*1.35f;
     }
 
     x1 = _x1;  x2 = _x2;
