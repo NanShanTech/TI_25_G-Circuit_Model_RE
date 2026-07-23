@@ -129,9 +129,12 @@ target_link_libraries(Group_Drivers_CMSIS PUBLIC
 
 # group APP
 add_library(Group_APP OBJECT
+  "${SOLUTION_ROOT}/../App/rlc_app.c"
   "${SOLUTION_ROOT}/../App/adc/adc_app.c"
   "${SOLUTION_ROOT}/../App/sweep/sweep_learn.c"
   "${SOLUTION_ROOT}/../App/filter/iir_filter.c"
+  "${SOLUTION_ROOT}/../App/filter/filter_runtime.c"
+  "${SOLUTION_ROOT}/../App/hmi/hmi_sweep.c"
 )
 target_include_directories(Group_APP PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_INCLUDE_DIRECTORIES>
@@ -139,6 +142,7 @@ target_include_directories(Group_APP PUBLIC
   "${SOLUTION_ROOT}/../App/adc"
   "${SOLUTION_ROOT}/../App/sweep"
   "${SOLUTION_ROOT}/../App/filter"
+  "${SOLUTION_ROOT}/../App/hmi"
 )
 target_compile_definitions(Group_APP PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>

@@ -58,8 +58,8 @@ void MX_GPIO_Init(void)
                           |AD9910_PWR_Pin|AD9910_RST_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, AD9910_DRO_Pin|AD9959_UPDATE_Pin|AD9959_SP3_Pin|AD9959_CS_Pin
-                          |AD9959_SDIO0_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, AD9910_DRO_Pin|GPIO_PIN_0|GPIO_PIN_2|AD9959_UPDATE_Pin
+                          |AD9959_SP3_Pin|AD9959_CS_Pin|AD9959_SDIO0_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, AD9959_SP0_Pin|AD9959_PDC_Pin|AD9959_SP1_Pin|AD9959_RESET_Pin
@@ -87,10 +87,10 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : AD9910_DRO_Pin AD9959_UPDATE_Pin AD9959_SP3_Pin AD9959_CS_Pin
-                           AD9959_SDIO0_Pin */
-  GPIO_InitStruct.Pin = AD9910_DRO_Pin|AD9959_UPDATE_Pin|AD9959_SP3_Pin|AD9959_CS_Pin
-                          |AD9959_SDIO0_Pin;
+  /*Configure GPIO pins : AD9910_DRO_Pin PC0 PC2 AD9959_UPDATE_Pin
+                           AD9959_SP3_Pin AD9959_CS_Pin AD9959_SDIO0_Pin */
+  GPIO_InitStruct.Pin = AD9910_DRO_Pin|GPIO_PIN_0|GPIO_PIN_2|AD9959_UPDATE_Pin
+                          |AD9959_SP3_Pin|AD9959_CS_Pin|AD9959_SDIO0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -118,6 +118,8 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* PC0 / PC2 用作继电器控制 GPIO，关闭 PC2 模拟开关 */
 
 }
 

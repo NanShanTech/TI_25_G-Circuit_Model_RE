@@ -254,6 +254,24 @@ void AD9910_AmpWrite(uint16_t Amp)
     Txfrc();
 }
 
+// void AD9910_AmpWrite(uint16_t Amp)
+// { 
+//     uint16_t amp_word;
+    
+//     // 输入范围检查，限制在0~800mV
+//     if (Amp > 765) {
+//         Amp = 765;
+//     }
+    
+//     // 转换为14位控制字 (0~16383)
+//     amp_word = (uint16_t)((Amp * 16383UL) / 740.0f);
+    
+//     profile11[0] = (amp_word >> 8) & 0xFF;    // 高8位
+//     profile11[1] = amp_word & 0xFF;           // 低8位
+    
+//     Txfrc(); 
+// }//经过校准的版本 输入期望mv值
+
 /************************************************************
 ** 函数名称 ：AD9910_RAM_WAVE_Set(AD9910_WAVE_ENUM wave)
 ** 函数功能 ：设置AD9910,RAM功能，向AD9910芯片内部RAM写入1024个点的波形数据，使模块可输出任意波形
@@ -481,6 +499,8 @@ void AD9910_DRG_FrePara_Set(uint32_t lowFre, uint32_t upFre, uint32_t posStep, u
     AD9910_UP_DAT_1;
     AD9910_UP_DAT_0;
 }
+
+
 
 /************************************************************
 ** 函数名称 ：void AD9910_PhaWrite(float phase)

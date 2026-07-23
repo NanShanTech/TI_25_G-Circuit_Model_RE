@@ -46,4 +46,4 @@ h743_hal/sweep_learn.o: ..\App\sweep\sweep_learn.c \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h ..\Core\Inc\dac.h \
   ..\Core\Inc\dma.h ..\Core\Inc\tim.h ..\App\comm\serial.h \
-  ..\App\app_types.h
+  ..\App\app_types.h ..\App\dds\ad9910.h ..\Core\Inc\main.h

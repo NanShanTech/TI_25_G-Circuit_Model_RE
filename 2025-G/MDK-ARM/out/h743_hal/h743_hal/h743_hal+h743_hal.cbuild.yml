@@ -112,6 +112,10 @@ build:
     - ../../../../App/measure
     - ../../../../App/task
     - ../../../../App/utils
+    - ../../../../App/adc
+    - ../../../../App/filter
+    - ../../../../App/hmi
+    - ../../../../App/sweep
     - ../../../../long_fft
     - ../../../RTE/_h743_hal
     - ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/Core/Include
@@ -246,6 +250,10 @@ build:
           category: header
         - file: ../../../../App/app_types.h
           category: header
+        - file: ../../../../App/rlc_app.c
+          category: sourceC
+        - file: ../../../../App/rlc_app.h
+          category: header
         - file: ../../../../App/adc/adc_app.c
           category: sourceC
         - file: ../../../../App/adc/adc_app.h
@@ -257,6 +265,14 @@ build:
         - file: ../../../../App/filter/iir_filter.c
           category: sourceC
         - file: ../../../../App/filter/iir_filter.h
+          category: header
+        - file: ../../../../App/filter/filter_runtime.c
+          category: sourceC
+        - file: ../../../../App/filter/filter_runtime.h
+          category: header
+        - file: ../../../../App/hmi/hmi_sweep.c
+          category: sourceC
+        - file: ../../../../App/hmi/hmi_sweep.h
           category: header
     - group: long_fft
       files:

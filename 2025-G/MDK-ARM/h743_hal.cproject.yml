@@ -23,6 +23,10 @@ project:
         - ../App/measure
         - ../App/task
         - ../App/utils
+        - ../App/adc
+        - ../App/filter
+        - ../App/hmi
+        - ../App/sweep
         - ../long_fft
       debug: "on"
       define:
@@ -129,12 +133,18 @@ project:
       files:
         - file: ../App/app_config.h
         - file: ../App/app_types.h
+        - file: ../App/rlc_app.c
+        - file: ../App/rlc_app.h
         - file: ../App/adc/adc_app.c
         - file: ../App/adc/adc_app.h
         - file: ../App/sweep/sweep_learn.c
         - file: ../App/sweep/sweep_learn.h
         - file: ../App/filter/iir_filter.c
         - file: ../App/filter/iir_filter.h
+        - file: ../App/filter/filter_runtime.c
+        - file: ../App/filter/filter_runtime.h
+        - file: ../App/hmi/hmi_sweep.c
+        - file: ../App/hmi/hmi_sweep.h
     - group: long_fft
       files:
         - file: ../long_fft/arm_bitreversal2_extra.c

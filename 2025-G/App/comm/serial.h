@@ -37,12 +37,12 @@ void Serial_RxOnIdle(UART_HandleTypeDef *huart);
 #define UART_RX_BUF_SIZE  128
 
 extern uint8_t  uart1_rx_buf[UART_RX_BUF_SIZE];
-extern uint16_t uart1_rx_len;
-extern uint8_t  uart1_rx_flag;
+extern volatile uint16_t uart1_rx_len;
+extern volatile uint8_t  uart1_rx_flag;
 
 extern uint8_t  uart3_rx_buf[UART_RX_BUF_SIZE];
-extern uint16_t uart3_rx_len;
-extern uint8_t  uart3_rx_flag;
+extern volatile uint16_t uart3_rx_len;
+extern volatile uint8_t  uart3_rx_flag;
 
 /* ================================================================
  * 三、HMI 串口屏协议 — 薄封装（帧尾 \xff\xff\xff，写到 uart3_tx_buf）
@@ -53,6 +53,8 @@ void HMI_SendInt(const char *ctl, int num);
 void HMI_SendFloat(const char *ctl, float num, int decimals);
 void HMI_WaveAdd(const char *ctl, int ch, int val);
 void HMI_WaveClear(const char *ctl, int ch);
+uint8_t HMI_WaveAddBatch(const char *ctl, uint8_t ch,
+                         const uint8_t *data, uint16_t count);
 
 void UART1_Printf(const char *format,...);
 void UART3_Printf(const char *format,...);

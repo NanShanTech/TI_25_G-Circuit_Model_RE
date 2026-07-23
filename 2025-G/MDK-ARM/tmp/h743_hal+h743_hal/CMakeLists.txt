@@ -68,6 +68,7 @@ target_include_directories(${CONTEXT} PUBLIC
   "${SOLUTION_ROOT}/../App/adc"
   "${SOLUTION_ROOT}/../App/sweep"
   "${SOLUTION_ROOT}/../App/filter"
+  "${SOLUTION_ROOT}/../App/hmi"
   "${SOLUTION_ROOT}/../long_fft"
   "${SOLUTION_ROOT}/../App/dds"
   "${SOLUTION_ROOT}/../App/comm"

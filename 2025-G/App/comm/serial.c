@@ -47,12 +47,12 @@ void Serial_Printf(UART_HandleTypeDef *huart, const char *fmt, ...)
  * ================================================================ */
 
 uint8_t  uart1_rx_buf[UART_RX_BUF_SIZE];
-uint16_t uart1_rx_len;
-uint8_t  uart1_rx_flag;
+volatile uint16_t uart1_rx_len;
+volatile uint8_t  uart1_rx_flag;
 
 uint8_t  uart3_rx_buf[UART_RX_BUF_SIZE];
-uint16_t uart3_rx_len;
-uint8_t  uart3_rx_flag;
+volatile uint16_t uart3_rx_len;
+volatile uint8_t  uart3_rx_flag;
 
 void Serial_RxInit(UART_HandleTypeDef *huart)
 {
@@ -122,6 +122,73 @@ void HMI_SendFloat(const char *ctl, float num, int decimals)
 
 void HMI_WaveAdd(const char *ctl, int ch, int val)  { HMI_Printf("add %s,%d,%d", ctl, ch, val); }
 void HMI_WaveClear(const char *ctl, int ch)         { HMI_Printf("cle %s,%d", ctl, ch); }
+
+static uint8_t HMI_WaitTransparentReply(uint8_t marker, uint32_t timeout_ms)
+{
+    uint32_t start = HAL_GetTick();
+    uint8_t valid = 0U;
+
+    while (uart3_rx_flag == 0U) {
+        if ((HAL_GetTick() - start) > timeout_ms) break;
+    }
+
+    if (uart3_rx_flag != 0U) {
+        SCB_InvalidateDCache_by_Addr((uint32_t *)uart3_rx_buf,
+                                     UART_RX_BUF_SIZE);
+        for (uint16_t i = 0U; (i + 3U) < uart3_rx_len; i++) {
+            if (uart3_rx_buf[i] == marker &&
+                uart3_rx_buf[i + 1U] == 0xFFU &&
+                uart3_rx_buf[i + 2U] == 0xFFU &&
+                uart3_rx_buf[i + 3U] == 0xFFU) {
+                valid = 1U;
+                break;
+            }
+        }
+    }
+
+    (void)HAL_UART_AbortReceive(&huart3);
+    uart3_rx_flag = 0U;
+    uart3_rx_len = 0U;
+    Serial_RxInit(&huart3);
+    return valid;
+}
+
+uint8_t HMI_WaveAddBatch(const char *ctl, uint8_t ch,
+                         const uint8_t *data, uint16_t count)
+{
+    char cmd[32];
+    int len;
+
+    if (ctl == NULL || data == NULL || count == 0U || count > 1024U) {
+        return 0U;
+    }
+
+    len = snprintf(cmd, sizeof(cmd), "addt %s,%u,%u",
+                   ctl, (unsigned int)ch, (unsigned int)count);
+    if (len <= 0 || (len + 3) > (int)sizeof(cmd)) return 0U;
+    cmd[len++] = (char)0xFF;
+    cmd[len++] = (char)0xFF;
+    cmd[len++] = (char)0xFF;
+
+    (void)HAL_UART_AbortReceive(&huart3);
+    __HAL_UART_SEND_REQ(&huart3, UART_RXDATA_FLUSH_REQUEST);
+    uart3_rx_flag = 0U;
+    uart3_rx_len = 0U;
+    Serial_RxInit(&huart3);
+
+    if (HAL_UART_Transmit(&huart3, (uint8_t *)cmd, (uint16_t)len,
+                          100U) != HAL_OK ||
+        !HMI_WaitTransparentReply(0xFEU, 500U)) {
+        return 0U;
+    }
+
+    if (HAL_UART_Transmit(&huart3, data, count, HAL_MAX_DELAY) != HAL_OK ||
+        !HMI_WaitTransparentReply(0xFDU, 500U)) {
+        return 0U;
+    }
+
+    return 1U;
+}
 
 
 void UART1_Printf(const char *format,...)

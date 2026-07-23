@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_PWR_LDO_SUPPLY,USE_HAL_DRIVER,STM32H743xx,ARM_MATH_CM7, __FPU_PRESENT=1</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Hardware;../Drivers/CMSIS/DSP/Include;../App;../App/comm;../App/dac;../App/dds;../App/fft;../App/measure;../App/task;../App/utils;../long_fft;../App/dsp;../App/filter;../App/sweep;../App/adc</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Hardware;../Drivers/CMSIS/DSP/Include;../App;../App/comm;../App/dac;../App/dds;../App/fft;../App/measure;../App/task;../App/utils;../long_fft;../App/dsp;../App/filter;../App/sweep;../App/adc;../App/hmi</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -742,6 +742,16 @@
               <FilePath>..\App\app_types.h</FilePath>
             </File>
             <File>
+              <FileName>rlc_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\rlc_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>rlc_app.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\rlc_app.h</FilePath>
+            </File>
+            <File>
               <FileName>sweep_learn.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\sweep\sweep_learn.c</FilePath>
@@ -760,6 +770,26 @@
               <FileName>iir_filter.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\App\filter\iir_filter.h</FilePath>
+            </File>
+            <File>
+              <FileName>filter_runtime.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\filter\filter_runtime.c</FilePath>
+            </File>
+            <File>
+              <FileName>filter_runtime.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\filter\filter_runtime.h</FilePath>
+            </File>
+            <File>
+              <FileName>hmi_sweep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\hmi\hmi_sweep.c</FilePath>
+            </File>
+            <File>
+              <FileName>hmi_sweep.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\hmi\hmi_sweep.h</FilePath>
             </File>
             <File>
               <FileName>adc_app.c</FileName>

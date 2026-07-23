@@ -46,8 +46,4 @@ h743_hal/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h ..\Core\Inc\adc.h \
   ..\Core\Inc\main.h ..\Core\Inc\dac.h ..\Core\Inc\dma.h \
   ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
-  ..\App\app_types.h ..\App\fft\fft_analyzer.h ..\App\task\scheduler.h \
-  ..\App\comm\serial.h ..\App\comm\protocol.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\App\dds\ad9910.h \
-  ..\App\adc\adc_app.h ..\App\sweep\sweep_learn.h \
-  ..\App\filter\iir_filter.h
+  ..\App\rlc_app.h
