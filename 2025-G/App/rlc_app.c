@@ -56,7 +56,7 @@ static void rlc_app_enter_learn_mode(void)
 
     sweep_learn_run();
 
-    //hmi_sweep_draw_curves();  //串口屏绘制幅频响应曲线
+
     
     coeffs = sweep_learn_get_coeffs();
     fit = sweep_learn_get_fit_result();
@@ -69,7 +69,7 @@ static void rlc_app_enter_learn_mode(void)
         UART3_Printf("t2.txt=\"FIT ERROR\"\xff\xff\xff");
     }
     UART3_Printf("tm0.en=0\xff\xff\xff");
-
+    hmi_sweep_draw_curves();
     rlc_app_start_normal_sampling();
     g_sys_mode = MODE_IDLE;
 }

@@ -1048,9 +1048,9 @@ void sweep_learn_run(void)
     memset(&fit_result, 0, sizeof(fit_result));
     memset(&iir_coeffs, 0, sizeof(iir_coeffs));
 
-    UART1_Printf("SWEEP_START: %lu-%lu Hz, step %lu/%lu, dual ADC\r\n",
-                 SWEEP_START_HZ, SWEEP_END_HZ,
-                 SWEEP_FINE_STEP_HZ, SWEEP_HIGH_STEP_HZ);
+//    UART1_Printf("SWEEP_START: %lu-%lu Hz, step %lu/%lu, dual ADC\r\n",
+//                 SWEEP_START_HZ, SWEEP_END_HZ,
+//                 SWEEP_FINE_STEP_HZ, SWEEP_HIGH_STEP_HZ);
     AD9910_AmpWrite(SWEEP_AD9910_AMP);
 
     for (uint32_t freq = SWEEP_START_HZ;
@@ -1143,23 +1143,23 @@ void sweep_learn_run(void)
             continue;
         }
         sweep_store(actual_hz, h_mag, h_phase);
-        UART1_Printf("SWEEP_POINT: %.3f,%.6f,%.3f\r\n",
-                     actual_hz, h_mag, h_phase);
+//        UART1_Printf("SWEEP_POINT: %.3f,%.6f,%.3f\r\n",
+//                     actual_hz, h_mag, h_phase);
     }
 
     AD9910_AmpWrite(0U);
-    UART1_Printf("SWEEP_DONE: %lu points\r\n", sweep_count);
+//    UART1_Printf("SWEEP_DONE: %lu points\r\n", sweep_count);
 
     if (sweep_count >= FIT_MIN_POINTS && sweep_fit_model()) {
         if (bilinear_transform(fit_result.n2, fit_result.n1, fit_result.n0,
                                fit_result.a, fit_result.b, SAMPLE_RATE_HZ,
                                &iir_coeffs) && iir_coeffs.valid) {
             learned_ok = 1U;
-            UART1_Printf("IIR_COEFF: b0=%.6f b1=%.6f b2=%.6f a1=%.6f a2=%.6f\r\n",
-                         iir_coeffs.b0, iir_coeffs.b1, iir_coeffs.b2,
-                         iir_coeffs.a1, iir_coeffs.a2);
+//            UART1_Printf("IIR_COEFF: b0=%.6f b1=%.6f b2=%.6f a1=%.6f a2=%.6f\r\n",
+//                         iir_coeffs.b0, iir_coeffs.b1, iir_coeffs.b2,
+//                         iir_coeffs.a1, iir_coeffs.a2);
         } else {
-            UART1_Printf("IIR_COEFF_ERROR\r\n");
+//            UART1_Printf("IIR_COEFF_ERROR\r\n");
         }
     }
 

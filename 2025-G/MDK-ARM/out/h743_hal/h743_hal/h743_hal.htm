@@ -3,9 +3,9 @@
 <title>Static Call Graph - [D:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image D:\My_Git\2025-G-RE\2025-G\MDK-ARM\out\h743_hal\h743_hal\h743_hal.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Fri Jul 24 10:35:28 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Fri Jul 24 14:40:11 2026
 <BR><P>
-<H3>Maximum Stack Usage =        760 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        768 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; rlc_app_task &rArr; Scheduler_Run &rArr; Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
 <P>
@@ -1229,7 +1229,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[111]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32h7xx_hal_gpio.o(.text.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<BR><BR>[Called By]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rlc_app_init
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_10ms
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_AD9910
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Txfrc
@@ -1727,7 +1728,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[125]"></a>Scheduler_Run</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, scheduler.o(.text.Scheduler_Run))
-<BR><BR>[Stack]<UL><LI>Max Depth = 560<LI>Call Chain = Scheduler_Run &rArr; Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
+<BR><BR>[Stack]<UL><LI>Max Depth = 568<LI>Call Chain = Scheduler_Run &rArr; Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_1min
@@ -1777,8 +1778,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_Run
 </UL>
 
-<P><STRONG><a name="[127]"></a>Task_10ms</STRONG> (Thumb, 904 bytes, Stack size 40 bytes, rlc_app.o(.text.Task_10ms))
-<BR><BR>[Stack]<UL><LI>Max Depth = 544<LI>Call Chain = Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
+<P><STRONG><a name="[127]"></a>Task_10ms</STRONG> (Thumb, 988 bytes, Stack size 48 bytes, rlc_app.o(.text.Task_10ms))
+<BR><BR>[Stack]<UL><LI>Max Depth = 552<LI>Call Chain = Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_GetError
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start_DMA
@@ -1971,7 +1972,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[95]"></a>main</STRONG> (Thumb, 302 bytes, Stack size 192 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 760<LI>Call Chain = main &rArr; rlc_app_task &rArr; Scheduler_Run &rArr; Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
+<BR><BR>[Stack]<UL><LI>Max Depth = 768<LI>Call Chain = main &rArr; rlc_app_task &rArr; Scheduler_Run &rArr; Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rlc_app_task
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rlc_app_init
@@ -1993,11 +1994,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[14a]"></a>rlc_app_init</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, rlc_app.o(.text.rlc_app_init))
+<P><STRONG><a name="[14a]"></a>rlc_app_init</STRONG> (Thumb, 174 bytes, Stack size 8 bytes, rlc_app.o(.text.rlc_app_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = rlc_app_init &rArr; HAL_ADC_Start_DMA &rArr; HAL_DMA_Start_IT &rArr; DMA_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADCEx_Calibration_Start
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start_DMA
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_AD9910
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_Init
@@ -2008,7 +2010,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[14b]"></a>rlc_app_task</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, rlc_app.o(.text.rlc_app_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 568<LI>Call Chain = rlc_app_task &rArr; Scheduler_Run &rArr; Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
+<BR><BR>[Stack]<UL><LI>Max Depth = 576<LI>Call Chain = rlc_app_task &rArr; Scheduler_Run &rArr; Task_10ms &rArr; sweep_learn_run &rArr; UART1_Printf &rArr; HAL_UART_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_Run
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;filter_runtime_process_pending
