@@ -47,4 +47,4 @@ h743_hal/filter_runtime.o: ..\App\filter\filter_runtime.c \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h ..\Core\Inc\dac.h \
   ..\App\filter\iir_filter.h ..\App\sweep\sweep_learn.h \
-  ..\Core\Inc\tim.h
+  ..\Core\Inc\tim.h ..\App\comm\Serial.h ..\App\app_types.h

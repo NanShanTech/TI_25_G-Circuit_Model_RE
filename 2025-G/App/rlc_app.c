@@ -45,12 +45,8 @@ static void rlc_app_exit_mode(SysMode_t mode)
 
 static void rlc_app_update_relay(SysMode_t mode)
 {
-    if (mode == MODE_SINE_WAVE || mode == MODE_CONTROL ||
-        mode == MODE_LEARN) {
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
-    } else if (mode == MODE_FILTER) {
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
-    }
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2,
+                      (mode == MODE_FILTER) ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }
 
 static void rlc_app_enter_learn_mode(void)
@@ -59,9 +55,9 @@ static void rlc_app_enter_learn_mode(void)
     const fit_result_t *fit;
 
     sweep_learn_run();
-    /* 需要在屏幕显示扫频曲线时启用下面这一行。 */
-    /* hmi_sweep_draw_curves(); */
 
+    //hmi_sweep_draw_curves();  //串口屏绘制幅频响应曲线
+    
     coeffs = sweep_learn_get_coeffs();
     fit = sweep_learn_get_fit_result();
     if (coeffs->valid) {
@@ -101,6 +97,7 @@ static void rlc_app_enter_mode(SysMode_t mode)
                          (unsigned long)HAL_DAC_GetError(&hdac1));
             rlc_app_start_normal_sampling();
             g_sys_mode = MODE_IDLE;
+            rlc_app_update_relay(g_sys_mode);
         }
         break;
     }
@@ -196,6 +193,7 @@ static void rlc_app_process_uart(void)
 
 void rlc_app_init(void)
 {
+    rlc_app_update_relay(g_sys_mode);
     Serial_RxInit(&huart3);
     Scheduler_Init();
     Init_AD9910();

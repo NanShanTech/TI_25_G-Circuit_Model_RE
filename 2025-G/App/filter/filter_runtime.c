@@ -65,7 +65,9 @@ static void filter_runtime_process_half(uint32_t offset)
     if (iir_filter_is_ready()) {
         iir_filter_process_block(s_adc_buffer, s_dac_buffer, offset, offset,
                                  FILTER_HALF_SAMPLES);
-    } else {
+    } //根据学习的参数进行IIR滤波处理
+    
+    else {
         for (uint32_t i = 0U; i < FILTER_HALF_SAMPLES; i++) {
             int32_t centered = (int32_t)s_adc_buffer[offset + i] -
                                (int32_t)DAC_MID_CODE;
@@ -73,10 +75,6 @@ static void filter_runtime_process_half(uint32_t offset)
             if (value < 0) value = 0;
             if (value > (int32_t)DAC_MAX_CODE) value = DAC_MAX_CODE;
             s_dac_buffer[offset + i] = (uint16_t)value;
-            for(int i = 0;i<512;i++)
-            {
-                UART1_Printf("%d\r\n",s_dac_buffer[i]);
-            }
         }
     }
 

@@ -4,6 +4,7 @@
 #define ADC_MID_CODE   2048.0f
 #define DAC_MID_CODE   2048.0f
 #define DAC_MAX_CODE   4095.0f
+#define DAC_GAIN_COMP  1.72f
 #define INV_ADC_MID    0.00048828125f  /* 1/2048 */
 
 static float b0, b1, b2;
@@ -44,10 +45,12 @@ void iir_filter_process_block(const uint16_t *adc_buf, uint16_t *dac_buf,
         _x2 = _x1;  _x1 = x;
         _y2 = _y1;  _y1 = y;
 
-        float dac = DAC_MID_CODE + (y * (DAC_MID_CODE - 1.0f) * IIR_OUTPUT_GAIN);
+        float dac = DAC_MID_CODE +
+                    (y * (DAC_MID_CODE - 1.0f) *
+                     IIR_OUTPUT_GAIN * DAC_GAIN_COMP);
         if (dac < 0.0f)       dac = 0.0f;
         if (dac > DAC_MAX_CODE) dac = DAC_MAX_CODE;
-        dac_buf[dac_offs + i] = (uint16_t)(dac + 0.5f)*1.35f;
+        dac_buf[dac_offs + i] = (uint16_t)(dac + 0.5f);
     }
 
     x1 = _x1;  x2 = _x2;
